@@ -4,50 +4,66 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-    [Header("")]
-    [SerializeField] private Transform _transform;
-    [SerializeField] private Rigidbody2D _rigidBody;
 
     [Header("Gravity Settings")]
-    [SerializeField] private float _influence;
-    [SerializeField] private float _intensity;
-    [SerializeField] private float _playerDistance;
-    [SerializeField] private Vector2 _pullForce;
+    // [SerializeField] private Transform _playerTransform;
+    // [SerializeField] private Rigidbody2D _rb;
+    // [SerializeField] private float _influence;
+    // [SerializeField] private float _intensity;
+    // [SerializeField] private float _playerDistance;
 
-    private bool _isGrounded;
+    // private Vector2 _pullForce;
+    private PlayerController _player;
+    private Rigidbody2D _rb;
 
+    private bool _top;
 
     // Start is called before the first frame update
     void Start()
     {
-        _rigidBody = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
+        _player = GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        // TESTING PURPOSES ONLY!!!
-        // TODO: Change to the the input system
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _rigidBody.gravityScale *= -1;
+            _rb.gravityScale *= -1;
             Rotation();
         }
-        // _playerDistance = Vector2.Distance(_rigidBody.position, _transform.position);
-        // if(_playerDistance <= )
+
+        // OnTriggerEnter2D(_player._collider);
     }
 
-    void Rotation ()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(_isGrounded)
+        /*if(other.CompareTag("Player"))
         {
-            transform.eulerAngles = new Vector3(0, 0, 180f);
-        } 
-        else
-        {
-            transform.eulerAngles = Vector3.zero;
-        }
+            _playerDistance = Vector2.Distance(_playerRB.position, transform.position);
+            if (_playerDistance <= _influence)
+            {
+                _pullForce = (transform.position - _playerTransform.position).normalized / _playerDistance * _intensity;
+                _playerRB.AddForce(_pullForce, ForceMode2D.Force);
+                _playerRB.gravityScale *= -10;
+            }
+        }*/
 
-        _isGrounded = !_isGrounded;
+        if (other.CompareTag("Player"))
+        {
+            _rb.gravityScale *= -1;
+            Rotation();
+        }
+    }
+
+    private void Rotation()
+    {
+        if (_top == false)
+            transform.eulerAngles = new Vector2(180f, 0);
+        else
+            transform.eulerAngles = Vector2.zero;
+
+        _player.facingRight = !_player.facingRight;
+        _top = !_top;
     }
 }

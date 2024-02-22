@@ -132,7 +132,7 @@ namespace TarodevController
 
         private bool _cachedQueryMode, _cachedQueryTriggers;
         private GeneratedCharacterSize _character;
-        private const float GRAVITY_SCALE = 1;
+        private const float GRAVITY_SCALE = -5;
 
         private void SetupCharacter()
         {
