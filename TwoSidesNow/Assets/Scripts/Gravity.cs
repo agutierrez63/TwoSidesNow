@@ -8,7 +8,8 @@ public class Gravity : MonoBehaviour
     private PlayerController _player;
     private Rigidbody2D _rb;
 
-    private bool _top;
+    private float _angle;
+    public bool top;
 
     // Start is called before the first frame update
     void Start()
@@ -22,19 +23,20 @@ public class Gravity : MonoBehaviour
         if (collider.CompareTag("Particles"))
         {
             _rb.gravityScale *= -1;
-            Debug.Log("Gravity Scale: " + _rb.gravityScale);
             Rotation();
         }
     }
 
+    #region Rotation
     private void Rotation()
     {
-        if (_top == false)
+        if (top == false)
             transform.eulerAngles = new Vector3(0, 0, 180f);
         else
             transform.eulerAngles = Vector3.zero;
 
         _player.facingRight = !_player.facingRight;
-        _top = !_top;
+        top = !top;
     }
+    #endregion
 }

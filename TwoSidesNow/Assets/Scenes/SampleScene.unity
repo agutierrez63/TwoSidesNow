@@ -5157,11 +5157,11 @@ MonoBehaviour:
   Axis: 0
   UpdateType: 0
   FollowHorizontal: 1
-  HorizontalFollowSmoothness: 0.1
+  HorizontalFollowSmoothness: 0.2
   FollowVertical: 1
-  VerticalFollowSmoothness: 0.1
+  VerticalFollowSmoothness: 0.2
   OffsetX: 0
-  OffsetY: 0
+  OffsetY: 0.05
   IsRelativeOffset: 1
   ZoomWithFOV: 0
   IgnoreTimeScale: 0
@@ -5187,7 +5187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &619394801
 MonoBehaviour:
   m_ObjectHideFlags: 0
