@@ -41,10 +41,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Jump();
+        //Movement();
     }
 
     void FixedUpdate()
     {
+        // Jump();
         Movement();
     }
 
