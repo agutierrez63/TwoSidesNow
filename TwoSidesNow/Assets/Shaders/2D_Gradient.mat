@@ -53,14 +53,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Color_01_Inf: 0.453
-    - _Color_02_Inf: 0.851
+    - _Color_01_Inf: 0.388
+    - _Color_02_Inf: 0.478
     - _EnableExternalAlpha: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_01: {r: 1, g: 0.9386859, b: 0.57758063, a: 0}
-    - _Color_02: {r: 1, g: 0.60382754, b: 0.9734455, a: 0}
-    - _Color_03: {r: 1, g: 0.8549928, b: 0.6514058, a: 1}
+    - _Color_01: {r: 0.001214108, g: 0.013702081, b: 0.049706575, a: 0}
+    - _Color_02: {r: 0.10461649, g: 0.013702081, b: 0.049706575, a: 0}
+    - _Color_03: {r: 0.028426038, g: 0.013702081, b: 0.049706575, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -41,13 +41,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Jump();
-        //Movement();
+        Movement();
     }
 
     void FixedUpdate()
     {
         // Jump();
-        Movement();
+        // Movement();
     }
 
     #region CheckGrounded
