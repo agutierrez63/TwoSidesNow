@@ -53,8 +53,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Color_01_Inf: 0.388
-    - _Color_02_Inf: 0.478
+    - _Color_01_Inf: 0.907
+    - _Color_02_Inf: 0.459
     - _EnableExternalAlpha: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

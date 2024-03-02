@@ -36,7 +36,7 @@ public class Gravity : MonoBehaviour
         else
             transform.eulerAngles = Vector3.zero;
 
-        _player.facingRight = !_player.facingRight;
+        _player.isFacingRight = !_player.isFacingRight;
         top = !top;
     }
     #endregion

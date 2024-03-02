@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _linearDrag = 0.0f;
 
-    public bool facingRight = true;
+    public bool isFacingRight = true;
 
     [Header("Particle Controller")]
     [SerializeField]
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private float _formationPeriod;
     #endregion
 
-    #region Variables
+    #region References
     private Rigidbody2D _rb;
     private BoxCollider2D _mainCollider;
     private Vector3 _groundCheckPos;
@@ -52,13 +52,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Jump();
+        // Jump();
         MovementParticles();
     }
 
     void FixedUpdate()
     {
-        Movement();
+        // Movement();
     }
 
     #region CheckGrounded
@@ -102,18 +102,19 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Movement
-    private void Movement()
+    public void Movement(InputAction.CallbackContext context)
     {
         CheckGrounded();
-        _moveDirection = Input.GetAxis("Horizontal");
+        // _moveDirection = Input.GetAxis("Horizontal");
+        _moveDirection = context.ReadValue<Vector2>().x;
         _rb.velocity = new Vector2(_moveDirection * _maxSpeed, _rb.velocity.y);
         
-        if(facingRight == false && _moveDirection > 0)
+        if(isFacingRight && _moveDirection < 0f)
         {
             Flip();
         } 
         
-        else if(facingRight == true && _moveDirection < 0)
+        else if(!isFacingRight && _moveDirection > 0f)
         {
             Flip();
         }
@@ -123,23 +124,26 @@ public class PlayerController : MonoBehaviour
     #region Flip
     private void Flip()
     {
-        facingRight = !facingRight;
-        Vector3 scaler = transform.localScale;
-        scaler.x *= -1;
-        transform.localScale = scaler;
+        isFacingRight = !isFacingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
     #endregion
 
     #region Jump
-    private void Jump()
+    public void Jump(InputAction.CallbackContext context)
     {
-        if ((Input.GetKeyDown(KeyCode.Space)) && _isGrounded)
+        //if ((Input.GetKeyDown(KeyCode.Space)) && _isGrounded)
+        if (context.performed && _isGrounded)
         {
+            // This is checks positive (down) 
             if (_rb.gravityScale > 0)
             {
                 _rb.velocity += Vector2.up * _jumpHeight;
             }
 
+            // if the gravity is negative (up)
             else
             {
                 _rb.velocity += Vector2.down * _jumpHeight;
