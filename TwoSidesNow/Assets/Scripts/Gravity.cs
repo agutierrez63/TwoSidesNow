@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
+    #region Variables
     private PlayerController _player;
     private Rigidbody2D _rb;
-
     private float _angle;
     public bool top;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
