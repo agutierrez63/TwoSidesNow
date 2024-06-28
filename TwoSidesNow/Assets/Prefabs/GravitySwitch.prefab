@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5164334585088898159}
   - component: {fileID: 6142846031459989276}
   - component: {fileID: 4834419454778672480}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Particles
   m_Icon: {fileID: 0}
@@ -4777,7 +4777,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4840,7 +4840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5763092491760506835}
   - component: {fileID: 2439561121759332236}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GravitySwitch
   m_TagString: Particles
   m_Icon: {fileID: 0}

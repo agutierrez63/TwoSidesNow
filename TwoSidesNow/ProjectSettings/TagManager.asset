@@ -7,15 +7,16 @@ TagManager:
   - Particles
   - Water
   - Ground
+  - Player2
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Particles
   - 
   - 
   - 

@@ -5,39 +5,34 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-    #region Variables
-    private PlayerController _player;
+    private PlayerMovement _player;
     private Rigidbody2D _rb;
-    private float _angle;
-    public bool top;
-    #endregion
+    private bool top = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _player = GetComponent<PlayerController>();
+        _player = GetComponent<PlayerMovement>();
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.CompareTag("Particles"))
         {
-            _rb.gravityScale *= -1;
-            Rotation();
+            ToggleGravity();
+            RotatePlayer();
         }
     }
 
-    #region Rotation
-    private void Rotation()
+    private void ToggleGravity()
     {
-        if (top == false)
-            transform.eulerAngles = new Vector3(0, 0, 180f);
-        else
-            transform.eulerAngles = Vector3.zero;
+        _rb.gravityScale *= -1;
+        _player.SetGravityReversed(_rb.gravityScale < 0);
+    }
 
-        _player.isFacingRight = !_player.isFacingRight;
+    private void RotatePlayer()
+    {
+        _player.FlipVertical();
         top = !top;
     }
-    #endregion
 }
