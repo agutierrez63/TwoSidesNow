@@ -3,39 +3,26 @@ using UnityEngine;
 
 public class BackgroundScaler : MonoBehaviour
 {
-    public GameObject background;
+    public GameObject _background;
+    private ProCamera2D _proCamera;
+    private Vector3 _initialScale;
 
-    // Reference to the ProCamera2D component
-    private ProCamera2D proCamera;
-
-    // Initial scale of the background object
-    private Vector3 initialScale;
-
-    // Adjust this factor to fine-tune the background scale
-    public float scaleMultiplier = 1f;
+    [SerializeField] private float _scaleMultiplier = 1f;
 
     void Start()
     {
-        // Get the ProCamera2D component attached to the camera
-        proCamera = GetComponent<ProCamera2D>();
-
-        // Record the initial scale of the background
-        initialScale = background.transform.localScale;
+        _proCamera = GetComponent<ProCamera2D>();
+        _initialScale = _background.transform.localScale;
     }
 
     void Update()
     {
-        // Ensure we have both the camera component and background assigned
-        if (proCamera != null && background != null)
+        if (_proCamera != null && _background != null)
         {
-            // Get the current orthographic size of the camera
-            float orthographicSize = proCamera.GameCamera.orthographicSize;
+            float orthographicSize = _proCamera.GameCamera.orthographicSize;
+            float scaleFactor = orthographicSize * _scaleMultiplier;
 
-            // Calculate the scale factor based on the orthographic size
-            float scaleFactor = orthographicSize * scaleMultiplier;
-
-            // Apply the scale factor to the initial scale of the background
-            background.transform.localScale = initialScale * scaleFactor / 10;
+            _background.transform.localScale = _initialScale * scaleFactor / 10;
         }
     }
 }

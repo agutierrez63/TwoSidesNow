@@ -15,7 +15,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
     public class ProCamera2D : MonoBehaviour, ISerializationCallbackReceiver
     {
 		public const string Title = "Pro Camera 2D";
-        public static readonly Version Version = new Version("2.9.6");
+        public static readonly Version Version = new Version("2.9.7");
 
         #region Inspector Variables
 
@@ -57,7 +57,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
             {
                 if (Equals(_instance, null))
                 {
-                    _instance = FindObjectOfType<ProCamera2D>();
+                    _instance = FindAnyObjectByType<ProCamera2D>();
 
                     if (Equals(_instance, null))
                         throw new UnityException("ProCamera2D does not exist.");
@@ -70,26 +70,17 @@ namespace Com.LuisPedroFonseca.ProCamera2D
         static ProCamera2D _instance;
 
         /// <summary>Property to know if there's a ProCamera2D present</summary>
-        public static bool Exists { get { return _instance != null; } }
+        public static bool Exists => _instance;
 
-		/// <summary>Is the camera moving?</summary>
-		public bool IsMoving 
-		{ 
-			get 
-			{ 
-				return 
-					Vector3H(_transform.localPosition) != Vector3H(_previousCameraPosition) || 
-					Vector3V(_transform.localPosition) != Vector3V(_previousCameraPosition);
-			} 
-		}
+        /// <summary>Is the camera moving?</summary>
+		public bool IsMoving =>
+            Vector3H(_transform.localPosition) != Vector3H(_previousCameraPosition) || 
+            Vector3V(_transform.localPosition) != Vector3V(_previousCameraPosition);
 
         /// <summary>Update ProCamera2D's camera rect</summary>
         public Rect Rect
         {
-            get
-            {
-                return GameCamera.rect;
-            }
+            get => GameCamera.rect;
 
             set
             {
@@ -107,10 +98,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 
         public Vector2 CameraTargetPositionSmoothed
         { 
-            get
-            { 
-                return new Vector2(_cameraTargetHorizontalPositionSmoothed, _cameraTargetVerticalPositionSmoothed); 
-            }
+            get => new(_cameraTargetHorizontalPositionSmoothed, _cameraTargetVerticalPositionSmoothed);
 
             set
             { 
@@ -138,8 +126,8 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 
         public Vector3 ParentPosition { get; private set; }
 
-        public Vector3 InfluencesSum { get { return _influencesSum; } }
-		Vector3 _influencesSum = Vector3.zero;
+        public Vector3 InfluencesSum => _influencesSum;
+        Vector3 _influencesSum = Vector3.zero;
 
         #endregion
 

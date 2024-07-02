@@ -1,32 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static System.TimeZoneInfo;
 using UnityEngine.SceneManagement;
 
-public class _GM : MonoBehaviour
+public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] private Animator _transition;
-    [SerializeField] private float _transitionTime = 1f;
 
+    [SerializeField] private Animator transition;
+    [SerializeField] private float transitionTIme = 1f;
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        // QuitGame();
-    }
-
-    public void QuitGame() 
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
-        Application.Quit();
+        
     }
 
     public void LoadNextLevel()
@@ -36,8 +27,8 @@ public class _GM : MonoBehaviour
 
     private IEnumerator LoadLevel(int levelIndex)
     {
-        _transition.SetTrigger("Start");
-        yield return new WaitForSeconds(_transitionTime);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTIme);
         SceneManager.LoadScene(levelIndex);
     }
 }

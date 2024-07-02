@@ -4,18 +4,30 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Rigidbody2D _rb;
+
+    private void Start()
     {
-        
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        if(gameObject.transform.position.y < -25f)
+        if(collider.CompareTag("Particles"))
         {
-            Destroy(this.gameObject);
+            ToggleGravity(collider);
+        }
+    }
+
+    private void ToggleGravity(Collider2D collider)
+    {
+        if (_rb != null)
+        {
+            _rb.gravityScale *= -1;
+        }
+        else
+        {
+            Debug.LogWarning("No Rigidbody2D found on object in affected layers.");
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
                     _pc2D = Camera.main.GetComponent<ProCamera2D>();
                 
                 if (_pc2D == null)
-                    _pc2D = FindObjectOfType<ProCamera2D>();
+                    _pc2D = FindAnyObjectByType<ProCamera2D>();
                 
                 #if UNITY_EDITOR
                 if (!Application.isPlaying && _pc2D != null && UnityEditor.SceneManagement.EditorSceneManager.preventCrossSceneReferences && _pc2D.gameObject.scene != gameObject.scene)

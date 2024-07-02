@@ -8,17 +8,19 @@ TagManager:
   - Water
   - Ground
   - Player2
+  - Wall
+  - Item
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - Platform
   - Water
   - UI
   - Player
   - Particles
-  - 
-  - 
+  - Player2
+  - Item
   - 
   - 
   - 

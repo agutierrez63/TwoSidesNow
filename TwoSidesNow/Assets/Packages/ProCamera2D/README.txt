@@ -38,6 +38,9 @@ Twitter - http://www.twitter.com/lpfonseca
 
 ## CHANGELOG ##
 
+2.9.7
+- Core - Minor tweaks. Support for Unity 6 Beta
+
 2.9.6
 - Core - Fixed a memory leak on the Core editor. Removed the header and user guide textures because they were the source of the issue and brought no real benefit
 

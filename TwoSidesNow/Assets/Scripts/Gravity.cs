@@ -7,7 +7,7 @@ public class Gravity : MonoBehaviour
 {
     private PlayerMovement _player;
     private Rigidbody2D _rb;
-    private bool top = false;
+    private bool _top = false;
 
     private void Start()
     {
@@ -33,6 +33,6 @@ public class Gravity : MonoBehaviour
     private void RotatePlayer()
     {
         _player.FlipVertical();
-        top = !top;
+        _top = !_top;
     }
 }
